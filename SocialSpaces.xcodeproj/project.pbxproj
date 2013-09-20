@@ -31,6 +31,8 @@
 		4967954817ECFBBD0002F8CE /* MWStoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4967954717ECFBBD0002F8CE /* MWStoryViewCell.m */; };
 		4967954A17ED04AE0002F8CE /* cnn.png in Resources */ = {isa = PBXBuildFile; fileRef = 4967954917ED04AE0002F8CE /* cnn.png */; };
 		4967954C17ED04EC0002F8CE /* cnn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4967954B17ED04EC0002F8CE /* cnn.jpg */; };
+		4967955117ED07DD0002F8CE /* MWCommentViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4967955017ED07DC0002F8CE /* MWCommentViewCell.m */; };
+		4967955317ED08320002F8CE /* MWCommentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4967955217ED08320002F8CE /* MWCommentViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,9 @@
 		4967954717ECFBBD0002F8CE /* MWStoryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWStoryViewCell.m; sourceTree = "<group>"; };
 		4967954917ED04AE0002F8CE /* cnn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cnn.png; sourceTree = "<group>"; };
 		4967954B17ED04EC0002F8CE /* cnn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cnn.jpg; sourceTree = "<group>"; };
+		4967954F17ED07DC0002F8CE /* MWCommentViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCommentViewCell.h; sourceTree = "<group>"; };
+		4967955017ED07DC0002F8CE /* MWCommentViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWCommentViewCell.m; sourceTree = "<group>"; };
+		4967955217ED08320002F8CE /* MWCommentViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MWCommentViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +152,9 @@
 				4967954217ECF46C0002F8CE /* MWStoryViewCell.xib */,
 				4967954617ECFBBD0002F8CE /* MWStoryViewCell.h */,
 				4967954717ECFBBD0002F8CE /* MWStoryViewCell.m */,
+				4967955217ED08320002F8CE /* MWCommentViewCell.xib */,
+				4967954F17ED07DC0002F8CE /* MWCommentViewCell.h */,
+				4967955017ED07DC0002F8CE /* MWCommentViewCell.m */,
 			);
 			path = SocialSpaces;
 			sourceTree = "<group>";
@@ -274,6 +282,7 @@
 				4967950B17ECE7CB0002F8CE /* InfoPlist.strings in Resources */,
 				4967953617ECEDE90002F8CE /* breakingbad.jpeg in Resources */,
 				4967953B17ECF22D0002F8CE /* fender.png in Resources */,
+				4967955317ED08320002F8CE /* MWCommentViewCell.xib in Resources */,
 				4967951317ECE7CB0002F8CE /* Images.xcassets in Resources */,
 				4967954C17ED04EC0002F8CE /* cnn.jpg in Resources */,
 				4967954A17ED04AE0002F8CE /* cnn.png in Resources */,
@@ -299,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4967955117ED07DD0002F8CE /* MWCommentViewCell.m in Sources */,
 				4967953217ECE8130002F8CE /* MWMainViewController.m in Sources */,
 				4967951117ECE7CB0002F8CE /* MWAppDelegate.m in Sources */,
 				4967950D17ECE7CB0002F8CE /* main.m in Sources */,

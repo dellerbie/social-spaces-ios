@@ -8,12 +8,14 @@
 
 #import "MWStoryDetailViewController.h"
 #import "MWStoryViewCell.h"
+#import "MWCommentViewCell.h"
 
 @interface MWStoryDetailViewController ()
 
 @end
 
 static NSString *kStoryViewCell = @"StoryViewCell";
+static NSString *kCommentViewCell = @"CommentViewCell";
 
 @implementation MWStoryDetailViewController
 
@@ -31,6 +33,7 @@ static NSString *kStoryViewCell = @"StoryViewCell";
 {
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"MWStoryViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier: kStoryViewCell];
+    [self.tableView registerNib:[UINib nibWithNibName:@"MWCommentViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier: kCommentViewCell];
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,19 +77,40 @@ static NSString *kStoryViewCell = @"StoryViewCell";
     UITableViewCell *cell = nil;
   
     // Configure the cell...
-    if(indexPath.section == 0 && indexPath.row == 0)
+    if(indexPath.section == 0)
     {
-      cell = [tableView dequeueReusableCellWithIdentifier:kStoryViewCell];
-    }
-    else if(indexPath.section == 0 && indexPath.row == 1)
-    {
-      cell = [tableView dequeueReusableCellWithIdentifier:normalCellIdentifier];
-      if(!cell)
+      if(indexPath.row == 0)
       {
-          cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:normalCellIdentifier];
+        cell = [tableView dequeueReusableCellWithIdentifier:kStoryViewCell];
       }
-      cell.textLabel.text = @"Related News Stories";
-      cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+      else
+      {
+        cell = [tableView dequeueReusableCellWithIdentifier:normalCellIdentifier];
+        if(!cell)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:normalCellIdentifier];
+        }
+        cell.textLabel.text = @"Related News Stories";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+      }
+    }
+    else if(indexPath.section == 1)
+    {
+      if(indexPath.row < 3)
+      {
+        NSLog(@"Section %d, Row %d", indexPath.section, indexPath.row);
+        cell = [tableView dequeueReusableCellWithIdentifier:kCommentViewCell];
+      }
+      else
+      {
+        cell = [tableView dequeueReusableCellWithIdentifier:normalCellIdentifier];
+        if(!cell)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:normalCellIdentifier];
+        }
+        cell.textLabel.text = @"View More Comments";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+      }
     }
   
     if(!cell)
@@ -104,6 +128,15 @@ static NSString *kStoryViewCell = @"StoryViewCell";
   if(indexPath.section == 0 && indexPath.row == 0)
   {
     height = 84.0f;
+  }
+  else if(indexPath.section == 1 && indexPath.row < 3)
+  {
+    NSString *text = @"This fucking cancer Tony - I tell you. Don't you fuck me over Tony, I need that house for my wife. She's got nothing without me Tone.";
+    UIFont *mainFont = [UIFont systemFontOfSize: 12.0];
+    NSDictionary *mainTextAttributes = @{ NSFontAttributeName : mainFont };
+    CGSize size = [text sizeWithAttributes:mainTextAttributes];
+    NSLog(@"Text height %f", size.height);
+    height = 36.0 + 16.0;
   }
   
   return height;
