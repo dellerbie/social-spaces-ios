@@ -14,25 +14,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="breakingbad.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="Fgo-4o-QJN">
-                        <rect key="frame" x="8" y="8" width="64" height="64"/>
+                        <rect key="frame" x="8" y="6" width="64" height="64"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cnn.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="oIX-Ui-X7c">
-                        <rect key="frame" x="80" y="56" width="16" height="16"/>
+                        <rect key="frame" x="80" y="54" width="12" height="12"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Posted on CNN.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AeJ-DV-uB6">
-                        <rect key="frame" x="104" y="56" width="147" height="16"/>
+                        <rect key="frame" x="99" y="52" width="147" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="232" translatesAutoresizingMaskIntoConstraints="NO" id="YWB-nb-bdE">
-                        <rect key="frame" x="80" y="5" width="232" height="52"/>
+                        <rect key="frame" x="80" y="3" width="232" height="52"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <string key="text">The finale to breaking bad is unlike anything we’ve ever seen. Running at 75min in length. The finale to breaking bad is unlike anything we’ve ever seen.</string>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
