@@ -32,7 +32,7 @@
                         <rect key="frame" x="80" y="3" width="232" height="52"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <string key="text">The finale to breaking bad is unlike anything we’ve ever seen. Running at 75min in length. The finale to breaking bad is unlike anything we’ve ever seen.</string>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
