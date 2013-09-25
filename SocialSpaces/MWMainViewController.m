@@ -85,16 +85,16 @@ const static NSString *kStoryImageKey = @"Image";
   switch (section)
   {
     case 0:
-      title = @"Entertainment";
+      title = @"Sports";
       break;
     case 1:
       title = @"Technology";
       break;
     case 2:
-      title = @"US News";
+      title = @"Fitness";
       break;
     case 3:
-      title = @"Economy";
+      title = @"Dime Pieces";
       break;
     default:
       break;

@@ -10,4 +10,6 @@
 
 @interface MWCommentView : UIView
 
++(CGFloat)heightForComment;
+
 @end

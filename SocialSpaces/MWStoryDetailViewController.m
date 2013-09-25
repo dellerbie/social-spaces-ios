@@ -9,14 +9,15 @@
 #import "MWStoryDetailViewController.h"
 #import "MWStoryViewCell.h"
 #import "MWCommentViewCell.h"
+#import "MWCommentView.h"
 
 @interface MWStoryDetailViewController ()
 
 @end
 
-static NSString *kStoryViewCell = @"StoryViewCell";
-static NSString *kCommentViewCell = @"CommentViewCell";
-static NSString *kPhotosViewCell = @"PhotosViewCell";
+NSString *kStoryViewCell = @"StoryViewCell";
+NSString *kCommentViewCell = @"CommentViewCell";
+NSString *kPhotosViewCell = @"PhotosViewCell";
 
 @implementation MWStoryDetailViewController
 
@@ -34,7 +35,7 @@ static NSString *kPhotosViewCell = @"PhotosViewCell";
 {
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"MWStoryViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier: kStoryViewCell];
-    [self.tableView registerNib:[UINib nibWithNibName:@"MWCommentViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier: kCommentViewCell];
+    [self.tableView registerClass:[MWCommentViewCell class] forCellReuseIdentifier:kCommentViewCell];
 }
 
 - (void)didReceiveMemoryWarning
@@ -100,8 +101,9 @@ static NSString *kPhotosViewCell = @"PhotosViewCell";
     {
       if(indexPath.row < 3)
       {
-        NSLog(@"Section %d, Row %d", indexPath.section, indexPath.row);
         cell = [tableView dequeueReusableCellWithIdentifier: kCommentViewCell];
+        MWCommentViewCell *cv = (MWCommentViewCell *)cell;
+        [cv resizeCommentView];
       }
       else
       {
@@ -180,19 +182,8 @@ static NSString *kPhotosViewCell = @"PhotosViewCell";
   }
   else if(indexPath.section == 1 && indexPath.row < 3)
   {
-    //height = 36.0 + 11.0;
-      NSString *text = @"This fucking cancer Tony - I tell you. Don't you fuck me over Tony, I need that house for my wife. She's got nothing without me Tone.";
-      UIFont *mainFont = [UIFont systemFontOfSize:10.0f];
-      UIColor *color = [UIColor blackColor];
-      NSDictionary *attributes = @{ NSFontAttributeName : mainFont, NSForegroundColorAttributeName : color };
-      float textHeight = [text sizeWithAttributes:attributes].height;
-      float usernameLabelHeight = 21.0;
-      NSLog(@"text height: %f, text + label height: %f", textHeight, textHeight + usernameLabelHeight);
-      
-      float imageHeight = 36.0;
-      
-      //height = textHeight + usernameLabelHeight + margin;
-      height = 70.0;
+      height = [MWCommentView heightForComment];
+      //height = 80.0;
   }
   else if(indexPath.section == 2 && indexPath.row == 0)
   {

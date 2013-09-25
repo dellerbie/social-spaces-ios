@@ -10,8 +10,6 @@
 
 @interface MWCommentViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
-@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *commentLabel;
+- (void)resizeCommentView;
 
 @end
