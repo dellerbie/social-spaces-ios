@@ -18,6 +18,8 @@ static NSString *kImageCell = @"ImageCell";
 {
   [super viewDidLoad];
   [[self collectionView] registerNib:[UINib nibWithNibName:@"MWImagesCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:kImageCell];
+  
+  self.collectionView.backgroundColor = [UIColor lightTextColor];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section;
@@ -29,7 +31,8 @@ static NSString *kImageCell = @"ImageCell";
 {
   
   MWImagesCell *cell = [cv dequeueReusableCellWithReuseIdentifier:kImageCell forIndexPath:indexPath];
-  cell.imageView.image = [[UIImage imageNamed:@"sopranos.jpg"] fillSize: CGSizeMake(100, 100)];
+  NSString *imageName = [NSString stringWithFormat:@"breakingbad%ld.jpg", (indexPath.row % 4) + 1];
+  cell.imageView.image = [[UIImage imageNamed:imageName] fillSize:CGSizeMake(100, 100)];
   
   return cell;
 }
@@ -37,6 +40,16 @@ static NSString *kImageCell = @"ImageCell";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
   return CGSizeMake(100, 100);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+  return 5.0;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+  return 5.0;
 }
 
 @end
