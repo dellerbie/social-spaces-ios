@@ -43,7 +43,7 @@ static NSString *kPhotosViewCell = @"PhotosViewCell";
       nRows = 2;
       break;
     case 1:
-      nRows = 4;
+      nRows = 6;
       break;
     case 2:
       nRows = 2;
@@ -80,7 +80,7 @@ static NSString *kPhotosViewCell = @"PhotosViewCell";
   }
   else if(indexPath.section == 1)
   {
-    if(indexPath.row < 3)
+    if(indexPath.row < 5)
     {
       cell = [tableView dequeueReusableCellWithIdentifier: kCommentViewCell];
       MWCommentViewCell *cv = (MWCommentViewCell *)cell;
@@ -161,7 +161,7 @@ static NSString *kPhotosViewCell = @"PhotosViewCell";
   {
     height = 76.0f;
   }
-  else if(indexPath.section == 1 && indexPath.row < 3)
+  else if(indexPath.section == 1 && indexPath.row < 5)
   {
       height = [MWCommentView heightForComment];
   }
@@ -178,13 +178,14 @@ static NSString *kPhotosViewCell = @"PhotosViewCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   id viewController = nil;
+  BOOL validSelection = YES;
   
   if(indexPath.section == 0 && indexPath.row == 1)
   {
     viewController = [[MWArticlesViewController alloc] initWithStyle:UITableViewStylePlain];
     [viewController setTitle:@"Articles"];
   }
-  else if(indexPath.section == 1 && indexPath.row == 3)
+  else if(indexPath.section == 1 && indexPath.row == 5)
   {
     viewController = [[MWCommentsViewController alloc] initWithStyle:UITableViewStylePlain];
     [viewController setTitle:@"Comments"];
@@ -195,9 +196,15 @@ static NSString *kPhotosViewCell = @"PhotosViewCell";
     viewController = [[MWImagesViewController alloc] initWithCollectionViewLayout:layout];
     [viewController setTitle:@"Photos"];
   }
+  else
+  {
+    validSelection = NO;
+  }
 
-  // Push the view controller.
-  [self.navigationController pushViewController:viewController animated:YES];
+  if(validSelection)
+  {
+    [self.navigationController pushViewController:viewController animated:YES];
+  }
 }
 
 @end

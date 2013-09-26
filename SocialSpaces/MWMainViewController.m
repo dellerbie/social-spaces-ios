@@ -26,10 +26,10 @@ const static NSString *kStoryImageKey = @"Image";
     if (self) {
         // Custom initialization
       self.data = @[
-        @[@{kStoryTitleKey: @"Breaking Bad Finale", kStoryImageKey: @"breakingbad.jpeg"}, @{kStoryTitleKey: @"Led Zeppelin Reunion", kStoryImageKey: @"ledzeppelin.png"}],
-        @[@{kStoryTitleKey: @"James Goldolfini", kStoryImageKey: @"sopranos.jpg"}, @{kStoryTitleKey: @"Fender's 70th Anniversary", kStoryImageKey: @"fender.png"}],
-        @[@{kStoryTitleKey: @"Fender's 70th Anniversary", kStoryImageKey: @"fender.png"}, @{kStoryTitleKey: @"James Goldolfini", kStoryImageKey: @"sopranos.jpg"}],
-        @[@{kStoryTitleKey: @"Led Zeppelin Reunion", kStoryImageKey: @"ledzeppelin.png"}, @{kStoryTitleKey: @"Breaking Bad Finale", kStoryImageKey: @"breakingbad.jpeg"}]
+        @[@{kStoryTitleKey: @"Breaking Bad Finale", kStoryImageKey: @"breakingbad.jpeg"}, @{kStoryTitleKey: @"Led Zeppelin Reunion", kStoryImageKey: @"ledzeppelin.png"}, @{kStoryTitleKey: @"James Goldolfini", kStoryImageKey: @"sopranos.jpg"},@{kStoryTitleKey: @"Fender's 70th Anniversary", kStoryImageKey: @"fender.png"},@{kStoryTitleKey: @"Breaking Bad Finale", kStoryImageKey: @"breakingbad.jpeg"}],
+        @[@{kStoryTitleKey: @"James Goldolfini", kStoryImageKey: @"sopranos.jpg"}, @{kStoryTitleKey: @"Fender's 70th Anniversary", kStoryImageKey: @"fender.png"}, @{kStoryTitleKey: @"Led Zeppelin Reunion", kStoryImageKey: @"ledzeppelin.png"}],
+        @[@{kStoryTitleKey: @"Fender's 70th Anniversary", kStoryImageKey: @"fender.png"}, @{kStoryTitleKey: @"James Goldolfini", kStoryImageKey: @"sopranos.jpg"}, @{kStoryTitleKey: @"Led Zeppelin Reunion", kStoryImageKey: @"ledzeppelin.png"}],
+        @[@{kStoryTitleKey: @"Led Zeppelin Reunion", kStoryImageKey: @"ledzeppelin.png"}, @{kStoryTitleKey: @"James Goldolfini", kStoryImageKey: @"sopranos.jpg"}, @{kStoryTitleKey: @"Breaking Bad Finale", kStoryImageKey: @"breakingbad.jpeg"}, @{kStoryTitleKey: @"Fender's 70th Anniversary", kStoryImageKey: @"fender.png"}]
       ];
     }
     return self;
