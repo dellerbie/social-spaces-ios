@@ -10,14 +10,11 @@
 #import "MWStoryViewCell.h"
 #import "MWCommentViewCell.h"
 #import "MWCommentView.h"
+#import "MWArticlesViewController.h"
 
-@interface MWStoryDetailViewController ()
-
-@end
-
-NSString *kStoryViewCell = @"StoryViewCell";
-NSString *kCommentViewCell = @"CommentViewCell";
-NSString *kPhotosViewCell = @"PhotosViewCell";
+static NSString *kStoryViewCell = @"StoryViewCell";
+static NSString *kCommentViewCell = @"CommentViewCell";
+static NSString *kPhotosViewCell = @"PhotosViewCell";
 
 @implementation MWStoryDetailViewController
 
@@ -159,7 +156,7 @@ NSString *kPhotosViewCell = @"PhotosViewCell";
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:normalCellIdentifier];
         }
         cell.textLabel.font = [UIFont boldSystemFontOfSize:10.0f];
-        cell.textLabel.text = @"View More Photos & Videos";
+        cell.textLabel.text = @"View More Photos";
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
       }
     }
@@ -193,44 +190,20 @@ NSString *kPhotosViewCell = @"PhotosViewCell";
   return height;
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-  NSString *title = @"";
-  
-  switch (section)
-  {
-    case 0:
-      title = @"The Scoop";
-      break;
-    case 1:
-      title = @"What They Are Saying";
-      break;
-    case 2:
-      title = @"Photos & Videos";
-      break;
-    default:
-      break;
-  }
-  
-  return title;
-}
-
-/*
 #pragma mark - Table view delegate
 
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+  id viewController = nil;
+  
+  if(indexPath.section == 0 && indexPath.row == 1)
+  {
+    viewController = [[MWArticlesViewController alloc] initWithStyle:UITableViewStylePlain];
+    [viewController setTitle:@"Articles"];
+  }
 
-    // Pass the selected object to the new view controller.
-    
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+  // Push the view controller.
+  [self.navigationController pushViewController:viewController animated:YES];
 }
- 
- */
 
 @end
