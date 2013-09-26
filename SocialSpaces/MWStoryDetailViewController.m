@@ -12,6 +12,7 @@
 #import "MWCommentView.h"
 #import "MWArticlesViewController.h"
 #import "MWCommentsViewController.h"
+#import "MWImagesViewController.h"
 
 static NSString *kStoryViewCell = @"StoryViewCell";
 static NSString *kCommentViewCell = @"CommentViewCell";
@@ -187,6 +188,12 @@ static NSString *kPhotosViewCell = @"PhotosViewCell";
   {
     viewController = [[MWCommentsViewController alloc] initWithStyle:UITableViewStylePlain];
     [viewController setTitle:@"Comments"];
+  }
+  else if(indexPath.section == 2 && indexPath.row == 1)
+  {
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    viewController = [[MWImagesViewController alloc] initWithCollectionViewLayout:layout];
+    [viewController setTitle:@"Photos"];
   }
 
   // Push the view controller.
