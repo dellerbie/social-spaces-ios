@@ -44,7 +44,7 @@ static NSString *kStoryViewCell = @"StoryViewCell";
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-  return @"Breaking Bad";
+  return @"Breaking Bad Finale";
 }
 
 /*

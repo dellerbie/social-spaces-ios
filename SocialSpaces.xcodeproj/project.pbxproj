@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		492C969D17F4BA61009BBAC1 /* UIImage+ResizeAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 492C969C17F4BA61009BBAC1 /* UIImage+ResizeAdditions.m */; };
 		492C971717F4D2CE009BBAC1 /* MWArticlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 492C971517F4D2CE009BBAC1 /* MWArticlesViewController.m */; };
+		492C971B17F4D8E7009BBAC1 /* MWCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 492C971A17F4D8E7009BBAC1 /* MWCommentsViewController.m */; };
 		4967950117ECE7CB0002F8CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4967950017ECE7CB0002F8CE /* Foundation.framework */; };
 		4967950317ECE7CB0002F8CE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4967950217ECE7CB0002F8CE /* CoreGraphics.framework */; };
 		4967950517ECE7CB0002F8CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4967950417ECE7CB0002F8CE /* UIKit.framework */; };
@@ -52,6 +53,8 @@
 		492C969C17F4BA61009BBAC1 /* UIImage+ResizeAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ResizeAdditions.m"; sourceTree = "<group>"; };
 		492C971417F4D2CE009BBAC1 /* MWArticlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWArticlesViewController.h; sourceTree = "<group>"; };
 		492C971517F4D2CE009BBAC1 /* MWArticlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWArticlesViewController.m; sourceTree = "<group>"; };
+		492C971917F4D8E7009BBAC1 /* MWCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCommentsViewController.h; sourceTree = "<group>"; };
+		492C971A17F4D8E7009BBAC1 /* MWCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWCommentsViewController.m; sourceTree = "<group>"; };
 		496794FD17ECE7CB0002F8CE /* SocialSpaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialSpaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4967950017ECE7CB0002F8CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4967950217ECE7CB0002F8CE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -122,6 +125,8 @@
 				4967953017ECE8130002F8CE /* MWMainViewController.m */,
 				492C971417F4D2CE009BBAC1 /* MWArticlesViewController.h */,
 				492C971517F4D2CE009BBAC1 /* MWArticlesViewController.m */,
+				492C971917F4D8E7009BBAC1 /* MWCommentsViewController.h */,
+				492C971A17F4D8E7009BBAC1 /* MWCommentsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -355,6 +360,7 @@
 				492C969D17F4BA61009BBAC1 /* UIImage+ResizeAdditions.m in Sources */,
 				492C971717F4D2CE009BBAC1 /* MWArticlesViewController.m in Sources */,
 				4967953217ECE8130002F8CE /* MWMainViewController.m in Sources */,
+				492C971B17F4D8E7009BBAC1 /* MWCommentsViewController.m in Sources */,
 				4967951117ECE7CB0002F8CE /* MWAppDelegate.m in Sources */,
 				4967950D17ECE7CB0002F8CE /* main.m in Sources */,
 				4967954017ECF2610002F8CE /* MWStoryDetailViewController.m in Sources */,
