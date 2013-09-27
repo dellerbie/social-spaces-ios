@@ -23,8 +23,11 @@ const CGFloat CELL_MARGIN_TOP_BOTTOM = 5.0;
 {
   NSAttributedString *commentString = [MWCommentView commentString];
   float commentRectWidth = 320 - PROFILE_IMAGE_WIDTH - MIDDLE_COLUMN_LEFT_MARGIN - CELL_MARGIN_LEFT_RIGHT;
+  
+  // when putting real data in , check if it has a photo first
+  float imageAttachmentHeight = (commentRectWidth + 4.0) / 1.5;
   CGSize commentSize = [commentString boundingRectWithSize:CGSizeMake(commentRectWidth, 1000) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
-  CGFloat height = CELL_MARGIN_TOP_BOTTOM + USERNAME_COMMENT_TOP_MARGIN + FONT_SIZE + commentSize.height;
+  CGFloat height = CELL_MARGIN_TOP_BOTTOM*2 + USERNAME_COMMENT_TOP_MARGIN + FONT_SIZE + commentSize.height + imageAttachmentHeight;
   return height;
 }
 
@@ -35,7 +38,7 @@ const CGFloat CELL_MARGIN_TOP_BOTTOM = 5.0;
   UIFont *mainFont = [UIFont systemFontOfSize:FONT_SIZE];
   NSDictionary *mainTextAttributes = @{ NSFontAttributeName : mainFont, NSForegroundColorAttributeName : mainTextColor };
 
-  NSString *comment = @"This fucking cancer Tony - I tell you. Don't you fuck me over Tony, I need that house for my wife. She's got nothing without me Tone.";
+  NSString *comment = @"This fucking cancer Tony - I tell you. Don't you fuck me over Tony, I need that house for my wife. She's got nothing without me Tone. instagram.com/b/123x0a";
   NSAttributedString *commentString = [[NSAttributedString alloc] initWithString:comment attributes:mainTextAttributes];
   return commentString;
 }
@@ -45,13 +48,15 @@ const CGFloat CELL_MARGIN_TOP_BOTTOM = 5.0;
   [self drawProfileImage];
   [self drawUsernameAndCommentSource];
   [self drawComment];
+  [self drawImageAttachment];
 }
 
 - (void)drawProfileImage
 {
   CGRect rect = CGRectMake(0, 0, PROFILE_IMAGE_WIDTH, PROFILE_IMAGE_HEIGHT);
   UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0.0);
-  UIImage *image = [[UIImage imageNamed:@"sopranos.jpg"] fillSize:rect.size];
+  NSString *file = [NSString stringWithFormat:@"breakingbad%d.jpg", (arc4random()%4) + 1];
+  UIImage *image = [[UIImage imageNamed:file] fillSize:rect.size];
   [[UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:5.0] addClip];
   [image drawInRect:rect];
   UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -83,15 +88,43 @@ const CGFloat CELL_MARGIN_TOP_BOTTOM = 5.0;
   UIColor *mainTextColor = [UIColor blackColor];
   UIFont *mainFont = [UIFont systemFontOfSize:FONT_SIZE];
   NSDictionary *mainTextAttributes = @{ NSFontAttributeName : mainFont, NSForegroundColorAttributeName : mainTextColor };
+  NSDictionary *linkAttributes = @{NSFontAttributeName: mainFont, NSForegroundColorAttributeName: [UIColor blueColor] };
 
-  NSString *comment = @"This fucking cancer Tony - I tell you. Don't you fuck me over Tony, I need that house for my wife. She's got nothing without me Tone.";
-  NSAttributedString *commentString = [[NSAttributedString alloc] initWithString:comment attributes:mainTextAttributes];
+  NSString *comment = @"This fucking cancer Tony - I tell you. Don't you fuck me over Tony, I need that house for my wife. She's got nothing without me Tone. instagram.com/b/123x0a";
+  NSMutableAttributedString *commentString = [[NSMutableAttributedString alloc] initWithString:comment attributes:mainTextAttributes];
+  
+  // detect URLs
+  NSError *error = NULL;
+  NSDataDetector *detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink error:&error];
+  NSArray *matches = [detector matchesInString:comment
+                                       options:0
+                                         range:NSMakeRange(0, [comment length])];
+  for(NSTextCheckingResult *match in matches)
+  {
+    NSRange matchRange = [match range];
+    [commentString setAttributes:linkAttributes range:matchRange];
+  }
 
   float commentRectWidth = self.bounds.size.width - PROFILE_IMAGE_WIDTH - MIDDLE_COLUMN_LEFT_MARGIN - CELL_MARGIN_LEFT_RIGHT;
   CGSize commentSize = [commentString boundingRectWithSize:CGSizeMake(commentRectWidth, 1000) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
   CGRect commentRect = CGRectMake(PROFILE_IMAGE_WIDTH + MIDDLE_COLUMN_LEFT_MARGIN, FONT_SIZE + 8.0, commentSize.width, 100);
 
   [commentString drawInRect:commentRect];
+}
+
+-(void)drawImageAttachment
+{
+  float width = self.bounds.size.width - PROFILE_IMAGE_WIDTH - MIDDLE_COLUMN_LEFT_MARGIN - CELL_MARGIN_LEFT_RIGHT;
+  float height = width / 1.5;
+  CGRect rect = CGRectMake(0, 0, width, height);
+  UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0.0);
+  NSString *file = [NSString stringWithFormat:@"breakingbad%d.jpg", (arc4random()%4) + 1];
+  UIImage *image = [[UIImage imageNamed:file] fillSize:rect.size];
+  [[UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:3.0] addClip];
+  [image drawInRect:rect];
+  UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+  [newImage drawAtPoint:CGPointMake(PROFILE_IMAGE_WIDTH + MIDDLE_COLUMN_LEFT_MARGIN, [MWCommentView heightForComment] - height - 8.0)];
 }
 
 @end
