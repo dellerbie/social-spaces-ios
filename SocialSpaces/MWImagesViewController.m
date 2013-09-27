@@ -9,6 +9,7 @@
 #import "MWImagesViewController.h"
 #import "MWImagesCell.h"
 #import "UIImage+ResizeAdditions.h"
+#import "MWImageDetailViewController.h"
 
 static NSString *kImageCell = @"ImageCell";
 
@@ -50,6 +51,13 @@ static NSString *kImageCell = @"ImageCell";
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
   return 5.0;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+  MWImageDetailViewController *detailViewController = [[MWImageDetailViewController alloc] init];
+  detailViewController.image = [UIImage imageNamed:[NSString stringWithFormat:@"breakingbad%d.jpg", (indexPath.row % 4) + 1]];
+  [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
 @end

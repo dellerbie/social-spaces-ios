@@ -13,6 +13,8 @@
 #import "MWArticlesViewController.h"
 #import "MWCommentsViewController.h"
 #import "MWImagesViewController.h"
+#import "MWImageButton.h"
+#import "MWImageDetailViewController.h"
 
 static NSString *kStoryViewCell = @"StoryViewCell";
 static NSString *kCommentViewCell = @"CommentViewCell";
@@ -127,9 +129,14 @@ static NSString *kPhotosViewCell = @"PhotosViewCell";
         imageRect.size.height = imageWidth;
         imageRect.origin.x = originX;
         imageView.frame = imageRect;
+        MWImageButton *button = [[MWImageButton alloc] initWithFrame:imageRect];
+        button.image = image;
+        [button addTarget:self action:@selector(showImage:) forControlEvents:UIControlEventTouchUpInside];
+        [scrollView addSubview:button];
         [scrollView addSubview:imageView];
         originX += imageWidth + margin;
       }
+      
       [[cell contentView] addSubview:scrollView];
     }
     else
@@ -199,12 +206,20 @@ static NSString *kPhotosViewCell = @"PhotosViewCell";
   else
   {
     validSelection = NO;
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
   }
 
   if(validSelection)
   {
     [self.navigationController pushViewController:viewController animated:YES];
   }
+}
+
+-(void)showImage:(MWImageButton *)button
+{  
+  MWImageDetailViewController *imageVC = [[MWImageDetailViewController alloc] init];
+  imageVC.image = button.image;
+  [self.navigationController pushViewController:imageVC animated:YES];
 }
 
 @end
