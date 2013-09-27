@@ -15,6 +15,7 @@
 #import "MWImagesViewController.h"
 #import "MWImageButton.h"
 #import "MWImageDetailViewController.h"
+#import "MWWebViewController.h"
 
 static NSString *kStoryViewCell = @"StoryViewCell";
 static NSString *kCommentViewCell = @"CommentViewCell";
@@ -187,7 +188,15 @@ static NSString *kPhotosViewCell = @"PhotosViewCell";
   id viewController = nil;
   BOOL validSelection = YES;
   
-  if(indexPath.section == 0 && indexPath.row == 1)
+  if(indexPath.section == 0 && indexPath.row == 0)
+  {
+    MWWebViewController *vc = [[MWWebViewController alloc] init];
+    NSURL *url = [NSURL URLWithString:@"http://www.google.com"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [vc.webView loadRequest: request];
+    viewController = vc;
+  }
+  else if(indexPath.section == 0 && indexPath.row == 1)
   {
     viewController = [[MWArticlesViewController alloc] initWithStyle:UITableViewStylePlain];
     [viewController setTitle:@"Articles"];

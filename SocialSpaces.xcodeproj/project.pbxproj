@@ -46,6 +46,7 @@
 		CED40BB017F6302C00B4B22D /* MWImageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED40BAE17F6302C00B4B22D /* MWImageDetailViewController.m */; };
 		CED40BB117F6302C00B4B22D /* MWImageDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED40BAF17F6302C00B4B22D /* MWImageDetailViewController.xib */; };
 		CED40BB417F63F2500B4B22D /* MWImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CED40BB317F63F2500B4B22D /* MWImageButton.m */; };
+		CED40BB717F6419300B4B22D /* MWWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED40BB617F6419300B4B22D /* MWWebViewController.m */; };
 		CED5AAE917F0F88A001E1C9F /* MWCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CED5AAE817F0F88A001E1C9F /* MWCommentView.m */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +115,8 @@
 		CED40BAF17F6302C00B4B22D /* MWImageDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MWImageDetailViewController.xib; sourceTree = "<group>"; };
 		CED40BB217F63F2500B4B22D /* MWImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWImageButton.h; sourceTree = "<group>"; };
 		CED40BB317F63F2500B4B22D /* MWImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWImageButton.m; sourceTree = "<group>"; };
+		CED40BB517F6419300B4B22D /* MWWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWWebViewController.h; sourceTree = "<group>"; };
+		CED40BB617F6419300B4B22D /* MWWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWWebViewController.m; sourceTree = "<group>"; };
 		CED5AAE717F0F88A001E1C9F /* MWCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCommentView.h; sourceTree = "<group>"; };
 		CED5AAE817F0F88A001E1C9F /* MWCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWCommentView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,6 +160,8 @@
 				492C971D17F4DE05009BBAC1 /* MWImagesViewController.m */,
 				CED40BAD17F6302C00B4B22D /* MWImageDetailViewController.h */,
 				CED40BAE17F6302C00B4B22D /* MWImageDetailViewController.m */,
+				CED40BB517F6419300B4B22D /* MWWebViewController.h */,
+				CED40BB617F6419300B4B22D /* MWWebViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -426,6 +431,7 @@
 				4967954817ECFBBD0002F8CE /* MWStoryViewCell.m in Sources */,
 				CED5AAE917F0F88A001E1C9F /* MWCommentView.m in Sources */,
 				CED40BB417F63F2500B4B22D /* MWImageButton.m in Sources */,
+				CED40BB717F6419300B4B22D /* MWWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
