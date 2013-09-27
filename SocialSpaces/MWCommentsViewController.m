@@ -36,6 +36,7 @@ static NSString *kCommentViewCell = @"CommentViewCell";
 {
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCommentViewCell forIndexPath:indexPath];
   MWCommentViewCell *cv = (MWCommentViewCell *)cell;
+  cv.selectionStyle = UITableViewCellSelectionStyleNone;
   [cv resizeCommentView];
   return cell;
 }

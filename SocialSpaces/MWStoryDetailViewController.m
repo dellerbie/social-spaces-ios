@@ -87,6 +87,7 @@ static NSString *kPhotosViewCell = @"PhotosViewCell";
     {
       cell = [tableView dequeueReusableCellWithIdentifier: kCommentViewCell];
       MWCommentViewCell *cv = (MWCommentViewCell *)cell;
+      cv.selectionStyle = UITableViewCellSelectionStyleNone;
       [cv resizeCommentView];
     }
     else

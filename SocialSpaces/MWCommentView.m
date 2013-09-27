@@ -70,7 +70,7 @@ const CGFloat CELL_MARGIN_TOP_BOTTOM = 5.0;
   UIFont *boldFont = [UIFont boldSystemFontOfSize:FONT_SIZE];
 
   NSDictionary *attributesForUsername = @{ NSFontAttributeName : boldFont, NSForegroundColorAttributeName : mainTextColor };
-  NSDictionary *attributesForVia = @{NSFontAttributeName : [UIFont systemFontOfSize:10.0], NSForegroundColorAttributeName: [UIColor lightGrayColor] };
+  NSDictionary *attributesForVia = @{NSFontAttributeName : [UIFont systemFontOfSize:8.0], NSForegroundColorAttributeName: [UIColor lightGrayColor] };
 
   NSString *username = @"@JohnnySacks";
   NSString *via = @"via Twitter";
