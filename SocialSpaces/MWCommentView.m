@@ -49,11 +49,14 @@ const CGFloat CELL_MARGIN_TOP_BOTTOM = 5.0;
 
 - (void)drawProfileImage
 {
-  UIImage *image = [UIImage imageNamed:@"sopranos.jpg"];
-  CGSize newSize = CGSizeMake(PROFILE_IMAGE_WIDTH, PROFILE_IMAGE_HEIGHT);
-  UIImage *newImage = [image fillSize:newSize];
-  CGPoint point = CGPointMake(CELL_MARGIN_LEFT_RIGHT, CELL_MARGIN_TOP_BOTTOM);
-  [newImage drawAtPoint:point];
+  CGRect rect = CGRectMake(0, 0, PROFILE_IMAGE_WIDTH, PROFILE_IMAGE_HEIGHT);
+  UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0.0);
+  UIImage *image = [[UIImage imageNamed:@"sopranos.jpg"] fillSize:rect.size];
+  [[UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:5.0] addClip];
+  [image drawInRect:rect];
+  UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+  [newImage drawAtPoint:CGPointMake(CELL_MARGIN_LEFT_RIGHT, CELL_MARGIN_TOP_BOTTOM)];
 }
 
 -(void)drawUsernameAndCommentSource

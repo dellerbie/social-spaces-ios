@@ -31,7 +31,7 @@ static NSString *kImageCell = @"ImageCell";
 {
   
   MWImagesCell *cell = [cv dequeueReusableCellWithReuseIdentifier:kImageCell forIndexPath:indexPath];
-  NSString *imageName = [NSString stringWithFormat:@"breakingbad%ld.jpg", (indexPath.row % 4) + 1];
+  NSString *imageName = [NSString stringWithFormat:@"breakingbad%d.jpg", (indexPath.row % 4) + 1];
   cell.imageView.image = [[UIImage imageNamed:imageName] fillSize:CGSizeMake(100, 100)];
   
   return cell;
