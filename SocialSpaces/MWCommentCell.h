@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-@class WMATweetView;
+
+@class WMATweetView, MWComment;
 
 @interface MWCommentCell : UITableViewCell
+
+@property (nonatomic, strong) MWComment *comment;
+
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet WMATweetView *tweetView;

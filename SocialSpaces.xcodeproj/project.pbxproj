@@ -41,17 +41,16 @@
 		4967954817ECFBBD0002F8CE /* MWStoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4967954717ECFBBD0002F8CE /* MWStoryViewCell.m */; };
 		4967954A17ED04AE0002F8CE /* cnn.png in Resources */ = {isa = PBXBuildFile; fileRef = 4967954917ED04AE0002F8CE /* cnn.png */; };
 		4967954C17ED04EC0002F8CE /* cnn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4967954B17ED04EC0002F8CE /* cnn.jpg */; };
-		4967955117ED07DD0002F8CE /* MWCommentViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4967955017ED07DC0002F8CE /* MWCommentViewCell.m */; };
 		CE19903717FCA0210093CB06 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE19903617FCA0210093CB06 /* CoreText.framework */; };
 		CE91F9B417FE15310022187D /* MWCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91F9B317FE15310022187D /* MWCommentCell.m */; };
 		CE91F9B617FE15520022187D /* MWCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE91F9B517FE15520022187D /* MWCommentCell.xib */; };
 		CE91F9B917FE169A0022187D /* WMATweetView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91F9B817FE169A0022187D /* WMATweetView.m */; };
+		CE91F9BC17FE29CC0022187D /* MWComment.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91F9BB17FE29CC0022187D /* MWComment.m */; };
 		CED40BB017F6302C00B4B22D /* MWImageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED40BAE17F6302C00B4B22D /* MWImageDetailViewController.m */; };
 		CED40BB117F6302C00B4B22D /* MWImageDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED40BAF17F6302C00B4B22D /* MWImageDetailViewController.xib */; };
 		CED40BB417F63F2500B4B22D /* MWImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CED40BB317F63F2500B4B22D /* MWImageButton.m */; };
 		CED40BB717F6419300B4B22D /* MWWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED40BB617F6419300B4B22D /* MWWebViewController.m */; };
 		CED40BB917F64AD200B4B22D /* MWStoryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED40BB817F64AD200B4B22D /* MWStoryViewCell.xib */; };
-		CED5AAE917F0F88A001E1C9F /* MWCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CED5AAE817F0F88A001E1C9F /* MWCommentView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,14 +110,14 @@
 		4967954717ECFBBD0002F8CE /* MWStoryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWStoryViewCell.m; sourceTree = "<group>"; };
 		4967954917ED04AE0002F8CE /* cnn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cnn.png; sourceTree = "<group>"; };
 		4967954B17ED04EC0002F8CE /* cnn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cnn.jpg; sourceTree = "<group>"; };
-		4967954F17ED07DC0002F8CE /* MWCommentViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCommentViewCell.h; sourceTree = "<group>"; };
-		4967955017ED07DC0002F8CE /* MWCommentViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWCommentViewCell.m; sourceTree = "<group>"; };
 		CE19903617FCA0210093CB06 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		CE91F9B217FE15310022187D /* MWCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCommentCell.h; sourceTree = "<group>"; };
 		CE91F9B317FE15310022187D /* MWCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWCommentCell.m; sourceTree = "<group>"; };
 		CE91F9B517FE15520022187D /* MWCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MWCommentCell.xib; sourceTree = "<group>"; };
 		CE91F9B717FE169A0022187D /* WMATweetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMATweetView.h; sourceTree = "<group>"; };
 		CE91F9B817FE169A0022187D /* WMATweetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMATweetView.m; sourceTree = "<group>"; };
+		CE91F9BA17FE29CC0022187D /* MWComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWComment.h; sourceTree = "<group>"; };
+		CE91F9BB17FE29CC0022187D /* MWComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWComment.m; sourceTree = "<group>"; };
 		CED40BAD17F6302C00B4B22D /* MWImageDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWImageDetailViewController.h; sourceTree = "<group>"; };
 		CED40BAE17F6302C00B4B22D /* MWImageDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWImageDetailViewController.m; sourceTree = "<group>"; };
 		CED40BAF17F6302C00B4B22D /* MWImageDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MWImageDetailViewController.xib; sourceTree = "<group>"; };
@@ -127,8 +126,6 @@
 		CED40BB517F6419300B4B22D /* MWWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWWebViewController.h; sourceTree = "<group>"; };
 		CED40BB617F6419300B4B22D /* MWWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWWebViewController.m; sourceTree = "<group>"; };
 		CED40BB817F64AD200B4B22D /* MWStoryViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MWStoryViewCell.xib; sourceTree = "<group>"; };
-		CED5AAE717F0F88A001E1C9F /* MWCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCommentView.h; sourceTree = "<group>"; };
-		CED5AAE817F0F88A001E1C9F /* MWCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWCommentView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +177,8 @@
 		492C969817F4B8A2009BBAC1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CE91F9BA17FE29CC0022187D /* MWComment.h */,
+				CE91F9BB17FE29CC0022187D /* MWComment.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -191,10 +190,6 @@
 				CE91F9B817FE169A0022187D /* WMATweetView.m */,
 				4967954617ECFBBD0002F8CE /* MWStoryViewCell.h */,
 				4967954717ECFBBD0002F8CE /* MWStoryViewCell.m */,
-				4967954F17ED07DC0002F8CE /* MWCommentViewCell.h */,
-				4967955017ED07DC0002F8CE /* MWCommentViewCell.m */,
-				CED5AAE717F0F88A001E1C9F /* MWCommentView.h */,
-				CED5AAE817F0F88A001E1C9F /* MWCommentView.m */,
 				492C972217F4DEAE009BBAC1 /* MWImagesCell.h */,
 				492C972317F4DEAE009BBAC1 /* MWImagesCell.m */,
 				CED40BB217F63F2500B4B22D /* MWImageButton.h */,
@@ -437,7 +432,7 @@
 			files = (
 				CED40BB017F6302C00B4B22D /* MWImageDetailViewController.m in Sources */,
 				CE91F9B417FE15310022187D /* MWCommentCell.m in Sources */,
-				4967955117ED07DD0002F8CE /* MWCommentViewCell.m in Sources */,
+				CE91F9BC17FE29CC0022187D /* MWComment.m in Sources */,
 				492C969D17F4BA61009BBAC1 /* UIImage+ResizeAdditions.m in Sources */,
 				492C971717F4D2CE009BBAC1 /* MWArticlesViewController.m in Sources */,
 				492C972417F4DEAE009BBAC1 /* MWImagesCell.m in Sources */,
@@ -449,7 +444,6 @@
 				4967950D17ECE7CB0002F8CE /* main.m in Sources */,
 				4967954017ECF2610002F8CE /* MWStoryDetailViewController.m in Sources */,
 				4967954817ECFBBD0002F8CE /* MWStoryViewCell.m in Sources */,
-				CED5AAE917F0F88A001E1C9F /* MWCommentView.m in Sources */,
 				CED40BB417F63F2500B4B22D /* MWImageButton.m in Sources */,
 				CED40BB717F6419300B4B22D /* MWWebViewController.m in Sources */,
 			);

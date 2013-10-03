@@ -8,9 +8,8 @@
 
 #import "MWStoryDetailViewController.h"
 #import "MWStoryViewCell.h"
-#import "MWCommentViewCell.h"
-#import "MWCommentView.h"
 #import "MWCommentCell.h"
+#import "MWComment.h"
 #import "MWArticlesViewController.h"
 #import "MWCommentsViewController.h"
 #import "MWImagesViewController.h"
@@ -18,7 +17,6 @@
 #import "MWImageDetailViewController.h"
 #import "MWWebViewController.h"
 #import "WMATweetView.h"
-#import "UIImage+ResizeAdditions.h"
 
 static NSString *kStoryViewCell = @"StoryViewCell";
 static NSString *kCommentViewCell = @"CommentViewCell2";
@@ -91,58 +89,21 @@ static NSString *kPhotosViewCell = @"PhotosViewCell";
       cell = [tableView dequeueReusableCellWithIdentifier: kCommentViewCell];
       MWCommentCell *cv = (MWCommentCell *)cell;
       
-      // username and via attributes
-      UIColor *mainTextColor = [UIColor blackColor];
-      UIFont *boldFont = [UIFont boldSystemFontOfSize:10];
+      MWComment *comment = [[MWComment alloc] init];
+      comment.profileImage = [NSString stringWithFormat:@"breakingbad%d.jpg", (arc4random()%4) + 1];
+      comment.attachedImage = [NSString stringWithFormat:@"breakingbad%d.jpg", (arc4random()%4) + 1];
+      comment.username = @"@JohnnySacks";
+      comment.via = @"Twitter";
+      comment.comment = @"Tweet with a link http://t.co/dQ06Fbx3, screen name @wemakeapps, #hashtag, more text, another link http://t.co/9GQa6ycA @ZarroBoogs #ios moo";
+      cv.comment = comment;
       
-      NSDictionary *attributesForUsername = @{ NSFontAttributeName : boldFont, NSForegroundColorAttributeName : mainTextColor };
-      NSDictionary *attributesForVia = @{NSFontAttributeName : [UIFont systemFontOfSize:8.0], NSForegroundColorAttributeName: [UIColor lightGrayColor] };
-      
-      NSString *username = @"@JohnnySacks";
-      NSString *via = @"via Twitter";
-      NSString *strings = [@[username, via] componentsJoinedByString:@" "];
-      
-      NSMutableAttributedString *usernameAndSource = [[NSMutableAttributedString alloc] initWithString:strings];
-      [usernameAndSource setAttributes:attributesForUsername range:[strings rangeOfString:username]];
-      [usernameAndSource setAttributes:attributesForVia range:[strings rangeOfString:via]];
-      
-      cv.usernameLabel.attributedText = usernameAndSource;
-      
-      NSString *profileImageName = [NSString stringWithFormat:@"breakingbad%d.jpg", (arc4random()%4) + 1];
-      NSString *attachedImageName = [NSString stringWithFormat:@"breakingbad%d.jpg", (arc4random()%4) + 1];
-      
-      cv.profileImageView.image = [[UIImage imageNamed:profileImageName] fillSize:cv.profileImageView.bounds.size];
-      cv.attachedImageView.image = [[UIImage imageNamed:attachedImageName] fillSize:cv.attachedImageView.bounds.size];
-      
-      WMATweetView *tweetView = cv.tweetView;
-      tweetView.text = @"Tweet with a link http://t.co/dQ06Fbx3, screen name @wemakeapps, #hashtag, more text, another link http://t.co/9GQa6ycA @ZarroBoogs #ios moo";
-      
-      NSMutableArray *entities = [NSMutableArray array];
-      NSURL *url = [NSURL URLWithString:@"http://t.co/dQ06Fbx3"];
-      [entities addObject:[WMATweetURLEntity entityWithURL:url expandedURL:url displayURL:@"http://t.co/dQ06Fbx3" start:18 end:38]];
-      [entities addObject:[WMATweetUserMentionEntity entityWithScreenName:@"ZarroBoogs" name:@"Mark Beaton" idString:@"547490130" start:120 end:131]];
-      [entities addObject:[WMATweetHashtagEntity entityWithText:@"ios" start:132 end:136]];
-      tweetView.entities = entities;
-      
-      tweetView.backgroundColor = [UIColor clearColor];
-      tweetView.textColor = [UIColor darkTextColor];
-      tweetView.textFont = [UIFont systemFontOfSize:10.0];
-      tweetView.hashtagColor = [UIColor darkTextColor];
-      tweetView.hashtagFont = [UIFont boldSystemFontOfSize:10];
-      tweetView.userMentionColor = [UIColor lightGrayColor];
-      tweetView.userMentionFont = [UIFont boldSystemFontOfSize:10];
-      tweetView.urlColor = [UIColor blueColor];
-      
-      tweetView.urlTapped = ^(WMATweetURLEntity *entity, NSUInteger numberOfTouches)
+      cv.tweetView.urlTapped = ^(WMATweetURLEntity *entity, NSUInteger numberOfTouches)
       {
-        NSLog(@"Url tapped");
         MWWebViewController *vc = [[MWWebViewController alloc] init];
         NSURLRequest *request = [NSURLRequest requestWithURL:[entity URL]];
         [vc.webView loadRequest: request];
         [self.navigationController pushViewController:vc animated:YES];
       };
-      
-      [tweetView sizeToFit];
       
       cv.selectionStyle = UITableViewCellSelectionStyleNone;
     }

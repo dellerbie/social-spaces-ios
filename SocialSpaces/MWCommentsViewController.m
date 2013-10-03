@@ -7,17 +7,19 @@
 //
 
 #import "MWCommentsViewController.h"
-#import "MWCommentViewCell.h"
-#import "MWCommentView.h"
+#import "MWCommentCell.h"
+#import "MWComment.h"
+#import "WMATweetView.h"
+#import "MWWebViewController.h"
 
-static NSString *kCommentViewCell = @"CommentViewCell";
+static NSString *kCommentCell = @"CommentCell";
 
 @implementation MWCommentsViewController
 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  [self.tableView registerClass:[MWCommentViewCell class] forCellReuseIdentifier:kCommentViewCell];
+  [self.tableView registerClass:[MWCommentCell class] forCellReuseIdentifier:kCommentCell];
 }
 
 #pragma mark - Table view data source
@@ -34,16 +36,32 @@ static NSString *kCommentViewCell = @"CommentViewCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCommentViewCell forIndexPath:indexPath];
-  MWCommentViewCell *cv = (MWCommentViewCell *)cell;
-  cv.selectionStyle = UITableViewCellSelectionStyleNone;
-  [cv resizeCommentView];
+  MWCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:kCommentCell forIndexPath:indexPath];
+  
+  MWComment *comment = [[MWComment alloc] init];
+  comment.profileImage = [NSString stringWithFormat:@"breakingbad%d.jpg", (arc4random()%4) + 1];
+  comment.attachedImage = [NSString stringWithFormat:@"breakingbad%d.jpg", (arc4random()%4) + 1];
+  comment.username = @"@JohnnySacks";
+  comment.via = @"Twitter";
+  comment.comment = @"Tweet with a link http://t.co/dQ06Fbx3, screen name @wemakeapps, #hashtag, more text, another link http://t.co/9GQa6ycA @ZarroBoogs #ios moo";
+  cell.comment = comment;
+  
+  cell.tweetView.urlTapped = ^(WMATweetURLEntity *entity, NSUInteger numberOfTouches)
+  {
+    MWWebViewController *vc = [[MWWebViewController alloc] init];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[entity URL]];
+    [vc.webView loadRequest: request];
+    [self.navigationController pushViewController:vc animated:YES];
+  };
+  
+  cell.selectionStyle = UITableViewCellSelectionStyleNone;
+  
   return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  return [MWCommentView heightForComment];
+  return 325.0;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
