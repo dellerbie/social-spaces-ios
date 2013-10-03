@@ -116,18 +116,32 @@ static NSString *kPhotosViewCell = @"PhotosViewCell";
       
       WMATweetView *tweetView = cv.tweetView;
       tweetView.text = @"Tweet with a link http://t.co/dQ06Fbx3, screen name @wemakeapps, #hashtag, more text, another link http://t.co/9GQa6ycA @ZarroBoogs #ios moo";
+      
       NSMutableArray *entities = [NSMutableArray array];
-      [entities addObject:[WMATweetURLEntity entityWithURL:[NSURL URLWithString:@"http://t.co/dQ06Fbx3"] start:18 end:38]];
+      NSURL *url = [NSURL URLWithString:@"http://t.co/dQ06Fbx3"];
+      [entities addObject:[WMATweetURLEntity entityWithURL:url expandedURL:url displayURL:@"http://t.co/dQ06Fbx3" start:18 end:38]];
       [entities addObject:[WMATweetUserMentionEntity entityWithScreenName:@"ZarroBoogs" name:@"Mark Beaton" idString:@"547490130" start:120 end:131]];
       [entities addObject:[WMATweetHashtagEntity entityWithText:@"ios" start:132 end:136]];
       tweetView.entities = entities;
       
       tweetView.backgroundColor = [UIColor clearColor];
-      tweetView.textColor = [UIColor blackColor];
+      tweetView.textColor = [UIColor darkTextColor];
       tweetView.textFont = [UIFont systemFontOfSize:10.0];
-      tweetView.hashtagColor = [UIColor blackColor];
-      tweetView.userMentionColor = [UIColor blackColor];
+      tweetView.hashtagColor = [UIColor darkTextColor];
+      tweetView.hashtagFont = [UIFont boldSystemFontOfSize:10];
+      tweetView.userMentionColor = [UIColor lightGrayColor];
+      tweetView.userMentionFont = [UIFont boldSystemFontOfSize:10];
       tweetView.urlColor = [UIColor blueColor];
+      
+      tweetView.urlTapped = ^(WMATweetURLEntity *entity, NSUInteger numberOfTouches)
+      {
+        NSLog(@"Url tapped");
+        MWWebViewController *vc = [[MWWebViewController alloc] init];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[entity URL]];
+        [vc.webView loadRequest: request];
+        [self.navigationController pushViewController:vc animated:YES];
+      };
+      
       [tweetView sizeToFit];
       
       cv.selectionStyle = UITableViewCellSelectionStyleNone;
