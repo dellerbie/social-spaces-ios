@@ -19,7 +19,7 @@ static NSString *kCommentCell = @"CommentCell";
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  [self.tableView registerClass:[MWCommentCell class] forCellReuseIdentifier:kCommentCell];
+  [self.tableView registerNib:[UINib nibWithNibName:@"MWCommentCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier: kCommentCell];
 }
 
 #pragma mark - Table view data source
