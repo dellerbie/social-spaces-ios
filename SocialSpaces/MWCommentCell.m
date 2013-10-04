@@ -24,13 +24,13 @@
     return self;
 }
 
--(void)setComment:(MWComment *)comment
+- (void)setComment:(MWComment *)comment
 {
   _comment = comment;
   [self refresh];
 }
 
--(void)refresh
+- (void)refresh
 {
   // username and via attributes
   UIColor *mainTextColor = [UIColor blackColor];
@@ -55,10 +55,14 @@
   self.tweetView.text = self.comment.comment;
   
   NSMutableArray *entities = [NSMutableArray array];
-  NSURL *url = [NSURL URLWithString:@"http://t.co/dQ06Fbx3"];
+  /*NSURL *url = [NSURL URLWithString:@"http://t.co/dQ06Fbx3"];
   [entities addObject:[WMATweetURLEntity entityWithURL:url expandedURL:url displayURL:@"http://t.co/dQ06Fbx3" start:18 end:38]];
   [entities addObject:[WMATweetUserMentionEntity entityWithScreenName:@"ZarroBoogs" name:@"Mark Beaton" idString:@"547490130" start:120 end:131]];
-  [entities addObject:[WMATweetHashtagEntity entityWithText:@"ios" start:132 end:136]];
+  [entities addObject:[WMATweetHashtagEntity entityWithText:@"ios" start:132 end:136]];*/
+
+  [self createURLEntities:entities];
+  [self createHashtagEntities:entities];
+  [self createMentionEntities:entities];
   self.tweetView.entities = entities;
   
   self.tweetView.backgroundColor = [UIColor clearColor];
@@ -71,6 +75,54 @@
   self.tweetView.urlColor = [UIColor blueColor];
   
   [self.tweetView sizeToFit];
+}
+
+- (void)createURLEntities:(NSMutableArray *)entities
+{
+  NSDataDetector *detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink error:NULL];
+  NSArray *matches = [detector matchesInString:self.comment.comment
+                                         options:0
+                                           range:NSMakeRange(0, [self.comment.comment length])];
+
+  for(NSTextCheckingResult *match in matches)
+  {
+    NSRange matchRange = [match range];
+    WMATweetURLEntity *entity = [WMATweetURLEntity entityWithURL:[match URL]
+                                                      expandedURL:[match URL]
+                                                      displayURL:[[match URL] absoluteString] start:matchRange.location end:matchRange.location + matchRange.length];
+    [entities addObject:entity];
+  }
+}
+
+- (void)createHashtagEntities:(NSMutableArray *)entities
+{
+  NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\B#[a-z]+\\b" options:NSRegularExpressionCaseInsensitive error:NULL];
+  NSArray *matches = [regex matchesInString:self.comment.comment options:0 range:NSMakeRange(0, [self.comment.comment length])];
+  
+  for (NSTextCheckingResult *match in matches)
+  {
+    NSRange matchRange = [match range];
+    NSString *name = [self.comment.comment substringWithRange:matchRange];
+    [entities addObject:[WMATweetHashtagEntity entityWithText:name start:matchRange.location end:matchRange.location + matchRange.length]];
+  }
+}
+
+- (void)createMentionEntities:(NSMutableArray *)entities
+{
+  NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\B@\\w+\\b" options:NSRegularExpressionCaseInsensitive error:NULL];
+  NSArray *matches = [regex matchesInString:self.comment.comment options:0 range:NSMakeRange(0, [self.comment.comment length])];
+  
+  for (NSTextCheckingResult *match in matches)
+  {
+    NSRange matchRange = [match range];
+    NSString *name = [self.comment.comment substringWithRange:matchRange];
+    WMATweetUserMentionEntity *entity = [WMATweetUserMentionEntity entityWithScreenName:name
+                                                                                    name:name
+                                                                                    idString:@""
+                                                                                    start:matchRange.location
+                                                                                    end:matchRange.location + matchRange.length];
+    [entities addObject:entity];
+  }
 }
 
 @end
