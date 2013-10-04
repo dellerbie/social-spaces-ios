@@ -94,7 +94,7 @@ static NSString *kPhotosViewCell = @"PhotosViewCell";
       comment.attachedImage = [NSString stringWithFormat:@"breakingbad%d.jpg", (arc4random()%4) + 1];
       comment.username = @"@JohnnySacks";
       comment.via = @"Twitter";
-      comment.comment = @"Tweet with a link http://t.co/dQ06Fbx3, screen name @wemakeapps, #hashtag, more text, another link http://t.co/9GQa6ycA @ZarroBoogs #ios moo";
+      comment.comment = @"Tweet with a link http://t.co/dQ06Fbx3, screen name @wemakeapps, #hashtag, more text, another link http://t.co/9GQa6ycA @ZarroBoogs #ios mooooooooooo oooooooo oooooooooooooooo ooooooooooo";
       cv.comment = comment;
       
       cv.tweetView.urlTapped = ^(WMATweetURLEntity *entity, NSUInteger numberOfTouches)
@@ -189,8 +189,10 @@ static NSString *kPhotosViewCell = @"PhotosViewCell";
   }
   else if(indexPath.section == 1 && indexPath.row < 5)
   {
-      //height = [MWCommentView heightForComment];
-    height = 325.0;
+    MWComment *comment = [[MWComment alloc] init];
+    comment.attachedImage = @" ";
+    comment.comment = @"Tweet with a link http://t.co/dQ06Fbx3, screen name @wemakeapps, #hashtag, more text, another link http://t.co/9GQa6ycA @ZarroBoogs #ios mooooooooooo oooooooo oooooooooooooooo ooooooooooo";
+    height = [MWCommentCell heightForComment:comment];
   }
   else if(indexPath.section == 2 && indexPath.row == 0)
   {

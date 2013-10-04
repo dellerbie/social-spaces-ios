@@ -11,6 +11,10 @@
 #import "UIImage+ResizeAdditions.h"
 #import "MWComment.h"
 
+#define CELL_MARGIN           (8.0)
+#define PROFILE_PHOTO_SIZE    (36.0)
+#define IMAGE_ATTACHMENT_SIZE (257.0)
+
 @implementation MWCommentCell
 
 @synthesize comment = _comment;
@@ -48,17 +52,11 @@
   [usernameAndSource setAttributes:attributesForVia range:[strings rangeOfString:[@[viaLabel, self.comment.via] componentsJoinedByString:@" "]]];
   
   self.usernameLabel.attributedText = usernameAndSource;
-  
   self.profileImageView.image = [[UIImage imageNamed: self.comment.profileImage] fillSize:self.profileImageView.bounds.size];
   self.attachedImageView.image = [[UIImage imageNamed: self.comment.attachedImage] fillSize:self.attachedImageView.bounds.size];
-  
   self.tweetView.text = self.comment.comment;
   
   NSMutableArray *entities = [NSMutableArray array];
-  /*NSURL *url = [NSURL URLWithString:@"http://t.co/dQ06Fbx3"];
-  [entities addObject:[WMATweetURLEntity entityWithURL:url expandedURL:url displayURL:@"http://t.co/dQ06Fbx3" start:18 end:38]];
-  [entities addObject:[WMATweetUserMentionEntity entityWithScreenName:@"ZarroBoogs" name:@"Mark Beaton" idString:@"547490130" start:120 end:131]];
-  [entities addObject:[WMATweetHashtagEntity entityWithText:@"ios" start:132 end:136]];*/
 
   [self createURLEntities:entities];
   [self createHashtagEntities:entities];
@@ -75,6 +73,9 @@
   self.tweetView.urlColor = [UIColor blueColor];
   
   [self.tweetView sizeToFit];
+  
+  CGRect attachedImageViewFrame = self.attachedImageView.frame;
+  self.attachedImageView.frame = CGRectMake(attachedImageViewFrame.origin.x, CGRectGetMaxY(self.tweetView.frame) + 3.0, attachedImageViewFrame.size.width, attachedImageViewFrame.size.height);
 }
 
 - (void)createURLEntities:(NSMutableArray *)entities
@@ -123,6 +124,26 @@
                                                                                     end:matchRange.location + matchRange.length];
     [entities addObject:entity];
   }
+}
+
++ (CGFloat)heightForComment:(MWComment *)comment
+{
+  NSMutableAttributedString *commentString = [[NSMutableAttributedString alloc] initWithString:comment.comment];
+  NSDictionary *attributes = @{ NSFontAttributeName : [UIFont boldSystemFontOfSize:10.0], NSForegroundColorAttributeName : [UIColor darkTextColor] };
+  [commentString setAttributes:attributes range:NSMakeRange(0, [comment.comment length])];
+  
+  CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
+  
+  CGFloat width = screenWidth - (CELL_MARGIN * 2) - PROFILE_PHOTO_SIZE;
+  CGFloat height = [commentString boundingRectWithSize: CGSizeMake(width, 1000) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height;
+  height += 14.0;
+  
+  if(comment.attachedImage)
+  {
+    height += IMAGE_ATTACHMENT_SIZE + CELL_MARGIN;
+  }
+  
+  return height;
 }
 
 @end
